@@ -144,9 +144,8 @@ If no `.codaiignore` file exists, default patterns are used, including common ex
 
 ### Getting Help
 
-- Check the [GitHub Issues](https://github.com/yourusername/codaicli/issues) for known problems
+- Check the [GitHub Issues](https://github.com/chafficui/codaicli/issues) for known problems
 - Open a new issue if you find a bug
-- Join our [Discord community](https://discord.gg/your-server) for support
 
 ## Security Note
 
