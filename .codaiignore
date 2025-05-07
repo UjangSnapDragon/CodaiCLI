@@ -1,0 +1,5 @@
+.codaiignore
+.venv
+venv
+codaicli.egg-info
+**/__pycache__
