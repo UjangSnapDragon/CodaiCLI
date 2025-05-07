@@ -1,4 +1,4 @@
-"""Configuration management for Codaicli."""
+"""Configuration management for CodaiCLI."""
 
 import json
 from pathlib import Path

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Codaicli - AI-powered CLI assistant for code projects.
+CodaiCLI - AI-powered CLI assistant for code projects.
 Main CLI entry point.
 """
 
@@ -22,7 +22,7 @@ from codaicli.ui import UI
 @click.version_option()
 @click.pass_context
 def cli(ctx):
-    """Codaicli - AI-powered CLI assistant for code projects."""
+    """CodaiCLI - AI-powered CLI assistant for code projects."""
     if ctx.invoked_subcommand is None:
         # Main interactive mode
         interactive_mode()
@@ -55,7 +55,7 @@ def configure(view, reset, profile):
         config.set("current_profile", profile)
     
     console.print(Panel.fit(
-        "[bold blue]Codaicli Configuration[/bold blue]\n\n"
+        "[bold blue]CodaiCLI Configuration[/bold blue]\n\n"
         "Select which settings you want to configure. Leave blank to keep current values."
     ))
     

@@ -1,4 +1,4 @@
-"""UI components for Codaicli."""
+"""UI components for CodaiCLI."""
 
 import os
 import re
@@ -26,7 +26,7 @@ class UI:
         """Show welcome message."""
         self.clear()
         self.console.print(Panel.fit(
-            "[bold blue]Codaicli[/bold blue] - [italic]AI-powered CLI assistant for code projects[/italic]\n\n"
+            "[bold blue]CodaiCLI[/bold blue] - [italic]AI-powered CLI assistant for code projects[/italic]\n\n"
             f"Project: [green]{project_path}[/green]\n\n"
             "Type your query in natural language. For example:\n"
             "- \"What does this code do?\"\n"
@@ -36,7 +36,7 @@ class UI:
             "- [bold]use openai/gemini/claude[/bold] - Switch AI provider\n"
             "- [bold]help[/bold] - Show help\n"
             "- [bold]clear[/bold] - Clear screen\n"
-            "- [bold]exit[/bold] - Exit Codaicli",
+            "- [bold]exit[/bold] - Exit CodaiCLI",
             title="Welcome",
             border_style="blue",
             padding=(1, 2)
@@ -45,13 +45,13 @@ class UI:
     def show_help(self):
         """Show help information."""
         help_text = """
-# Codaicli Help
+# CodaiCLI Help
 
 ## Commands
 - `use openai/gemini/claude` - Switch AI provider
 - `help` - Show this help
 - `clear` - Clear screen
-- `exit`, `quit`, `q` - Exit Codaicli
+- `exit`, `quit`, `q` - Exit CodaiCLI
 
 ## Query Examples
 - "What does this code do?"
@@ -70,7 +70,7 @@ class UI:
 - Support for multiple AI providers
 
 ## .codaiignore
-Codaicli uses a `.codaiignore` file similar to `.gitignore` to specify files and directories to ignore.
+CodaiCLI uses a `.codaiignore` file similar to `.gitignore` to specify files and directories to ignore.
 You can create this file in your project root with patterns like:
 
 ```

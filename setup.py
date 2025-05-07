@@ -1,4 +1,4 @@
-"""Setup script for Codaicli."""
+"""Setup script for CodaiCLI."""
 
 from setuptools import setup, find_packages
 

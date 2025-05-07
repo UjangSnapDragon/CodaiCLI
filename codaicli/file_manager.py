@@ -1,4 +1,4 @@
-"""File operations for Codaicli."""
+"""File operations for CodaiCLI."""
 
 import os
 import re

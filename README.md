@@ -1,6 +1,6 @@
-# Codaicli: AI-powered CLI assistant for code projects
+# CodaiCLI: AI-powered CLI assistant for code projects
 
-Codaicli is an intelligent, terminal-based assistant for managing and editing software projects through natural language. It analyzes your project files and allows you to interact with them using natural language prompts, powered by multiple AI models like OpenAI, Google Gemini, and Anthropic Claude.
+CodaiCLI is an intelligent, terminal-based assistant for managing and editing software projects through natural language. It analyzes your project files and allows you to interact with them using natural language prompts, powered by multiple AI models like OpenAI, Google Gemini, and Anthropic Claude.
 
 ## Features
 
@@ -49,7 +49,7 @@ pip install -e ".[all]"
    cd your/project
    ```
 
-2. Run Codaicli
+2. Run CodaiCLI
    ```bash
    codaicli
    ```
@@ -67,7 +67,7 @@ pip install -e ".[all]"
 - `use openai/gemini/claude` - Switch AI provider
 - `help` - Show help information
 - `clear` - Clear screen
-- `exit` (or `quit`, `q`) - Exit Codaicli
+- `exit` (or `quit`, `q`) - Exit CodaiCLI
 
 ## Configuration
 
@@ -98,7 +98,7 @@ codaicli configure --profile development
 
 ## Ignored Files (.codaiignore)
 
-Codaicli uses a `.codaiignore` file similar to `.gitignore` to specify files and directories to ignore. Create this file in your project root with patterns:
+CodaiCLI uses a `.codaiignore` file similar to `.gitignore` to specify files and directories to ignore. Create this file in your project root with patterns:
 
 ```
 # Comments start with #

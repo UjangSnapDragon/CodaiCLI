@@ -1,4 +1,4 @@
-"""Utility functions for Codaicli."""
+"""Utility functions for CodaiCLI."""
 
 import os
 import re

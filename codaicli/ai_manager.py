@@ -1,4 +1,4 @@
-"""AI model management for Codaicli."""
+"""AI model management for CodaiCLI."""
 
 import re
 
@@ -115,7 +115,7 @@ class AIManager:
                 current_tokens += file_tokens
         
         # Build the prompt
-        prompt = f"""You are an AI programming assistant embedded in a CLI tool called Codaicli. You help developers understand and modify their code.
+        prompt = f"""You are an AI programming assistant embedded in a CLI tool called CodaiCLI. You help developers understand and modify their code.
 
 USER QUERY: {query}
 
