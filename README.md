@@ -1,6 +1,6 @@
 # Codaicli
 
-[![PyPI version](https://badge.fury.io/py/CodaiCLI.svg)](https://badge.fury.io/py/CodaiCLI)
+[![PyPI version](https://badge.fury.io/py/codaicli.svg)](https://badge.fury.io/py/codaicli)
 [![Python Versions](https://img.shields.io/pypi/pyversions/CodaiCLI.svg)](https://pypi.org/project/CodaiCLI/)
 [![Tests](https://github.com/chafficui/CodaiCLI/actions/workflows/test.yml/badge.svg)](https://github.com/chafficui/CodaiCLI/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/chafficui/CodaiCLI/branch/main/graph/badge.svg)](https://codecov.io/gh/chafficui/CodaiCLI)
