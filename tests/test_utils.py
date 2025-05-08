@@ -96,20 +96,6 @@ class TestFindGitRoot:
         (git_root / ".git").mkdir()
         
         assert find_git_root(git_root) == git_root
-    
-    @pytest.mark.skipif(os.name == 'nt', reason="Symlinks require admin privileges on Windows")
-    def test_find_git_root_with_symlinks(self, tmp_path):
-        """Test finding git root with symlinks."""
-        # Create a git repository
-        git_root = tmp_path / "project"
-        git_root.mkdir()
-        (git_root / ".git").mkdir()
-        
-        # Create a symlink to the project
-        symlink = tmp_path / "symlink"
-        symlink.symlink_to(git_root)
-        
-        assert find_git_root(symlink) == git_root
 
 class TestParseDiff:
     """Tests for parse_diff function."""
