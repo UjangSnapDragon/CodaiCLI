@@ -25,6 +25,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -e ".[test]"
+        # Install AI provider packages
+        pip install openai google-generativeai anthropic
+        # Install test dependencies
+        pip install pytest pytest-cov pytest-mock
     
     - name: Run tests
       run: |
