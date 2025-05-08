@@ -102,7 +102,7 @@ venv/
    - Check model availability in your region
 
 3. **Installation Issues**
-   - Ensure Python 3.7+ is installed
+   - Ensure Python 3.8+ is installed
    - Try installing in a virtual environment
 
 4. **Permission Errors**
