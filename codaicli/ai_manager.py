@@ -74,12 +74,24 @@ class AIManager:
         if provider == self.provider:
             return True
         
+        # Store current provider and model in case we need to revert
+        current_provider = self.provider
+        current_model = self.model
+        
         try:
+            # Validate provider before setting
+            if provider.lower() not in ["openai", "gemini", "claude"]:
+                print(f"Error setting provider: Unknown provider: {provider}")
+                return False
+                
             self.provider = provider
             self.model = self.config.get(f"{provider}_model")  # Update model for new provider
             self._setup_provider()
             return True
         except Exception as e:
+            # Revert to previous provider and model on error
+            self.provider = current_provider
+            self.model = current_model
             print(f"Error setting provider: {str(e)}")
             return False
     

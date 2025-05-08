@@ -39,6 +39,11 @@ setup(
             "google-generativeai>=0.1.0",
             "anthropic>=0.5.0",
         ],
+        "test": [
+            "pytest>=7.0.0",
+            "pytest-cov>=4.0.0",
+            "pytest-mock>=3.10.0",
+        ],
     },
     entry_points={
         "console_scripts": [

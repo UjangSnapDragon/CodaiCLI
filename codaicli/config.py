@@ -29,6 +29,10 @@ class Config:
     
     def save(self):
         """Save configuration to file."""
+        # Ensure the directory exists
+        if not self.config_dir.exists():
+            self.config_dir.mkdir(parents=True)
+            
         with open(self.config_file, "w") as f:
             json.dump(self.config, f, indent=2)
     

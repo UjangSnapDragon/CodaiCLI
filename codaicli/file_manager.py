@@ -25,24 +25,33 @@ class GitStylePatternMatcher:
             negated = True
             pattern = pattern[1:]
         
-        # Normalize pattern
-        pattern = pattern.rstrip('/')  # Trailing slashes are ignored
+        # Store whether this is a directory pattern
+        is_dir_pattern = pattern.endswith('/')
+        
+        # Normalize pattern - remove trailing slash for matching
+        pattern = pattern.rstrip('/')
         
         # Add to patterns list
         self.patterns.append({
             'pattern': pattern,
             'negated': negated,
-            'directory_only': pattern.endswith('/'),
-            'regex': self._compile_pattern(pattern)
+            'directory_only': is_dir_pattern,
+            'regex': self._compile_pattern(pattern, is_dir_pattern)
         })
     
-    def _compile_pattern(self, pattern):
+    def _compile_pattern(self, pattern, is_dir_pattern=False):
         """Compile a Git-style pattern to regex."""
+        # Handle special cases
+        if pattern == '*':
+            return re.compile(r'^[^/]*$')
+        if pattern == '**':
+            return re.compile(r'^.*$')
+            
         # Escape special regex characters
         escaped = re.escape(pattern)
         
         # Convert ** to match any directory depth
-        escaped = escaped.replace(r'\*\*', '.*')
+        escaped = escaped.replace(r'\*\*', '.*?')
         
         # Convert * to match any character except /
         escaped = escaped.replace(r'\*', '[^/]*')
@@ -55,13 +64,13 @@ class GitStylePatternMatcher:
             # Pattern with / is anchored to the base directory
             if escaped.startswith('/'):
                 # Leading / means match from the root of the repo
-                escaped = '^' + escaped[1:] + ('$' if not escaped.endswith('/') else '')
+                escaped = '^' + escaped[1:] + ('$' if not is_dir_pattern else '(?:/.*)?$')
             else:
                 # Without leading /, match from any directory
-                escaped = escaped + ('$' if not escaped.endswith('/') else '')
+                escaped = '.*?' + escaped + ('$' if not is_dir_pattern else '(?:/.*)?$')
         else:
             # Pattern without / matches in any directory
-            escaped = '(^|/)' + escaped + '(/|$)'
+            escaped = '.*?' + escaped + ('$' if not is_dir_pattern else '(?:/.*)?$')
         
         return re.compile(escaped)
     
@@ -85,11 +94,13 @@ class GitStylePatternMatcher:
         matched = False
         
         for pattern in self.patterns:
-            # Check if directory-only pattern against a file
-            if pattern['directory_only'] and not (path_str.endswith('/') or os.path.isdir(os.path.join(self.base_dir, path_str))):
+            # For directory patterns, we need to check if the path starts with the pattern
+            if pattern['directory_only']:
+                if path_str == pattern['pattern'] or path_str.startswith(pattern['pattern'] + '/'):
+                    matched = not pattern['negated']
                 continue
-                
-            # Check regex match
+            
+            # Check regex match for non-directory patterns
             if pattern['regex'].search(path_str):
                 matched = not pattern['negated']
         
@@ -158,7 +169,12 @@ class FileManager:
     
     def _is_ignored(self, path):
         """Check if a path should be ignored."""
-        rel_path = path.relative_to(self.project_path)
+        # Convert to relative path
+        try:
+            rel_path = path.relative_to(self.project_path)
+        except ValueError:
+            # If path is not relative to project_path, it's not ignored
+            return False
         
         # Always ignore files larger than 1MB
         if path.is_file() and path.stat().st_size > 1024 * 1024:

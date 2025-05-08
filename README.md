@@ -1,167 +1,131 @@
-# CodaiCLI: AI-powered CLI assistant for code projects
+# Codaicli
 
-CodaiCLI is an intelligent, terminal-based assistant for managing and editing software projects through natural language. It analyzes your project files and allows you to interact with them using natural language prompts, powered by multiple AI models like OpenAI, Google Gemini, and Anthropic Claude.
+[![PyPI version](https://badge.fury.io/py/CodaiCLI.svg)](https://badge.fury.io/py/CodaiCLI)
+[![Python Versions](https://img.shields.io/pypi/pyversions/CodaiCLI.svg)](https://pypi.org/project/CodaiCLI/)
+[![Tests](https://github.com/chafficui/CodaiCLI/actions/workflows/test.yml/badge.svg)](https://github.com/chafficui/CodaiCLI/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/chafficui/CodaiCLI/branch/main/graph/badge.svg)](https://codecov.io/gh/chafficui/CodaiCLI)
+
+An AI-powered CLI assistant for managing and editing software projects using natural language.
 
 ## Features
 
-- **AI-powered code analysis** and improvement suggestions
-- **Automatic or confirmed file changes** with difference highlighting
-- **File creation, deletion, and editing** through natural language
-- **Command execution** (with confirmation)
-- **Support for multiple AI providers**:
-  - OpenAI (default model: o4-mini)
-  - Google Gemini (default model: gemini-2.5-flash-preview-04-17)
-  - Anthropic Claude (default model: claude-3-7-sonnet-latest)
-- **Terminal UI** with rich formatting and syntax highlighting
-- **Interactive configuration** with profile support
-- **Customizable model selection** for each provider
+- 🤖 Multi-provider AI support:
+  - OpenAI
+  - Google Gemini
+  - Anthropic Claude
+- ⚙️ Interactive configuration system
+- 🔒 Command confirmation for safety
+- 📁 Smart file analysis
+- 🎯 Natural language project management
 
 ## Installation
 
-### From PyPI (Recommended)
-
 ```bash
-# Install the basic package
+# Basic installation
 pip install codaicli
 
-# Or install with all AI provider dependencies
+# Install with all dependencies
 pip install "codaicli[all]"
 ```
 
-### From Source
+## Quick Start
 
+1. Navigate to your project directory:
 ```bash
-# Clone the repository
-git clone https://github.com/chafficui/codaicli.git
-cd codaicli
-
-# Install in development mode
-pip install -e .
-
-# Or install with all dependencies
-pip install -e ".[all]"
+cd your-project
 ```
 
-## Usage
+2. Run Codaicli:
+```bash
+codaicli
+```
 
-1. Navigate to your project directory
-   ```bash
-   cd your/project
-   ```
-
-2. Run CodaiCLI
-   ```bash
-   codaicli
-   ```
-
-3. On first run, you'll be prompted to configure your API keys and models
-
-4. Ask questions or make requests in natural language:
-   - "What does this code do?"
-   - "How can I optimize this function?"
-   - "Create a config file with these settings"
-   - "Initialize a new git repository"
-
-## Commands
-
-- `use openai/gemini/claude` - Switch AI provider
-- `help` - Show help information
-- `clear` - Clear screen
-- `exit` (or `quit`, `q`) - Exit CodaiCLI
+3. Start interacting with your project using natural language!
 
 ## Configuration
-
-### Interactive Configuration
 
 Run the configuration wizard:
 ```bash
 codaicli configure
 ```
 
-This will show an interactive menu where you can:
-- View current configuration
-- Configure API keys
-- Select models for each provider
-- Set advanced options (tokens, temperature)
-- Manage configuration profiles
+### API Keys
 
-### Configuration File
+You'll need API keys for the AI providers you want to use:
 
-API keys and settings are stored in `~/.codaicli/config.json`. You can edit this file directly, but using the interactive configuration is recommended.
+- [OpenAI API Key](https://platform.openai.com/api-keys)
+- [Google AI Studio API Key](https://makersuite.google.com/app/apikey)
+- [Anthropic API Key](https://console.anthropic.com/settings/keys)
 
-### Configuration Profiles
+### Interactive Configuration
 
-You can create and switch between different configuration profiles:
-```bash
-codaicli configure --profile development
+The configuration wizard will guide you through:
+1. Setting up API keys
+2. Selecting default AI provider
+3. Choosing models for each provider
+4. Managing configuration profiles
+
+## Commands
+
+Within Codaicli:
+- `use openai/gemini/claude` - Switch AI provider
+- `help` - Show help information
+- `clear` - Clear screen
+- `exit` (or `quit`, `q`) - Exit CodaiCLI
+
+## Ignored Files
+
+Create a `.codaiignore` file to specify files and directories to ignore:
 ```
+# Ignore specific files
+secrets.txt
+*.env
 
-## Ignored Files (.codaiignore)
-
-CodaiCLI uses a `.codaiignore` file similar to `.gitignore` to specify files and directories to ignore. Create this file in your project root with patterns:
-
+# Ignore directories
+node_modules/
+venv/
 ```
-# Comments start with #
-node_modules/    # Ignore directory
-*.log            # Ignore by extension
-/dist            # Ignore from repo root
-build/           # Trailing slash for directories only
-!important.log   # Exclude from ignore (include this file)
-```
-
-Pattern rules:
-- `*` matches any string except `/`
-- `**` matches any directory depth
-- `?` matches a single character
-- `/` at the start anchors to repo root
-- `/` at the end matches directories only
-- `!` at the start negates a pattern (include matching files)
-
-If no `.codaiignore` file exists, default patterns are used, including common excludes like `.git/`, `node_modules/`, binary files, etc.
 
 ## Troubleshooting
 
 ### Common Issues
 
 1. **API Key Errors**
-   - Make sure your API keys are correctly configured
-   - Check if you have the correct provider package installed
-   - Verify your API key permissions and quotas
+   - Verify your API keys are correctly configured
+   - Check provider status pages:
+     - [OpenAI Status](https://status.openai.com)
+     - [Google AI Status](https://status.cloud.google.com)
+     - [Anthropic Status](https://status.anthropic.com)
 
 2. **Model Not Found**
-   - The default models are suggestions - you can use any model name
-   - Check the provider's documentation for available models
-   - Make sure you have access to the model you're trying to use
+   - Ensure you have access to the selected model
+   - Check model availability in your region
 
 3. **Installation Issues**
-   - Make sure you have Python 3.7 or higher
-   - Try installing with `--no-cache-dir` if you have dependency issues
-   - Use `pip install -v` for verbose output during installation
+   - Ensure Python 3.7+ is installed
+   - Try installing in a virtual environment
 
 4. **Permission Errors**
-   - Check if you have write permissions in the project directory
-   - Verify the configuration directory permissions (`~/.codaicli`)
-
-### Getting Help
-
-- Check the [GitHub Issues](https://github.com/chafficui/codaicli/issues) for known problems
-- Open a new issue if you find a bug
+   - Check file permissions
+   - Run with appropriate privileges
 
 ## Security Note
 
-- **All changes and command executions require user confirmation**
-- **No data is modified or transmitted without user interaction**
-- **API keys are stored locally and never shared**
-- **Use `.codaiignore` to prevent sensitive files from being analyzed**
+- All changes and command executions require user confirmation
+- API keys are stored locally in your user directory
+- Use `.codaiignore` to protect sensitive files
+- No sensitive data is collected or transmitted
 
 ## Dependencies
 
 - Python 3.7+
-- rich - for fancy CLI output
-- click - for CLI commands
-- openai/google-generativeai/anthropic - for AI provider access
-- python-dotenv - for API key management
+- OpenAI Python SDK
+- Google Generative AI SDK
+- Anthropic Python SDK
+- Rich (for terminal formatting)
+- Typer (for CLI interface)
+- PyYAML (for configuration)
 
 ## License
 
-MIT
+MIT License - See LICENSE file for details

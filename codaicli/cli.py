@@ -143,29 +143,37 @@ def _configure_provider(console, config):
     config.set("default_provider", provider)
 
 def _configure_api_keys(console, config):
-    """Configure API keys."""
-    # Show current API keys
-    console.print("\n[bold]Current API Keys:[/bold]")
-    for provider in ["openai", "gemini", "claude"]:
-        key = config.get(f"{provider}_api_key", "")
-        masked_key = "•" * 8 if key else "Not set"
-        console.print(f"{provider.title()}: {masked_key}")
+    """Configure API keys for all providers."""
+    console.print("\n[bold]API Key Configuration[/bold]")
+    console.print("You'll need API keys for the providers you want to use.")
+    console.print("\nGet your API keys from:")
+    console.print("- OpenAI: [link=https://platform.openai.com/api-keys]https://platform.openai.com/api-keys[/link]")
+    console.print("- Google AI Studio: [link=https://makersuite.google.com/app/apikey]https://makersuite.google.com/app/apikey[/link]")
+    console.print("- Anthropic: [link=https://console.anthropic.com/settings/keys]https://console.anthropic.com/settings/keys[/link]")
     
-    # Ask which provider's key to update
-    provider = Prompt.ask(
-        "\nWhich provider's API key do you want to update?",
-        choices=["openai", "gemini", "claude", "none"],
-        default="none"
-    )
+    # OpenAI
+    if Prompt.ask("\nConfigure OpenAI API key?", choices=["y", "n"], default="y") == "y":
+        api_key = Prompt.ask("Enter your OpenAI API key", password=True)
+        if api_key:
+            config.set_api_key("openai", api_key)
+            console.print("[green]OpenAI API key configured successfully![/green]")
     
-    if provider != "none":
-        key = Prompt.ask(
-            f"Enter {provider.title()} API Key",
-            password=True,
-            default=config.get(f"{provider}_api_key", "")
-        )
-        if key:
-            config.set(f"{provider}_api_key", key)
+    # Google Gemini
+    if Prompt.ask("\nConfigure Google Gemini API key?", choices=["y", "n"], default="y") == "y":
+        api_key = Prompt.ask("Enter your Google AI Studio API key", password=True)
+        if api_key:
+            config.set_api_key("gemini", api_key)
+            console.print("[green]Google Gemini API key configured successfully![/green]")
+    
+    # Anthropic Claude
+    if Prompt.ask("\nConfigure Anthropic Claude API key?", choices=["y", "n"], default="y") == "y":
+        api_key = Prompt.ask("Enter your Anthropic API key", password=True)
+        if api_key:
+            config.set_api_key("claude", api_key)
+            console.print("[green]Anthropic Claude API key configured successfully![/green]")
+    
+    config.save()
+    console.print("\n[green]API key configuration completed![/green]")
 
 def _configure_models(console, config):
     """Configure model settings."""
